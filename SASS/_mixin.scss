@@ -1,0 +1,68 @@
+@import"varaible";
+
+@mixin MQ($MQ...) {
+    
+    @if length($MQ)==1{
+        @media screen and (max-width:nth($MQ,1)){
+            @content;
+        }
+    }
+
+    @if length($MQ)==2{
+        @media screen and(max-width:nth($MQ,1)) and(min-width:nth($MQ,2)){
+            @content;
+        }
+    }
+
+
+   
+}
+
+
+@mixin button {
+    background-image:linear-gradient(left bottom,$color-yellow,$color-yellowlight);
+    border-radius:$border-radius;
+    font-size:$font-button;
+    color:$color-white;
+    padding:10px 24px;
+    border:1px solid $color-yellow;
+    letter-spacing:1px;
+    font-weight:bold;
+    font-size:$font-button;
+    transition: all 1s;
+
+    @include MQ(991px){
+        font-size:$font-button-sm;
+        padding:8px 15px !important;
+    }
+
+    @include MQ(800px,768px){
+        font-size:$font-button-sm;
+        padding:8px 10px !important;
+        
+    }
+
+    &:hover{
+        background-image:linear-gradient($color-white);
+        color:$color-yellow !important;
+        border:1px solid $color-yellow;
+    }
+}
+
+
+@mixin padding {
+    padding:$public-padding 0;
+
+    @include MQ (991px){
+        padding:$public-padding-md 0;
+
+    }
+    
+    @include MQ (767px){
+        padding-bottom:$public-padding-sm 0;
+        
+    }
+}
+
+
+
